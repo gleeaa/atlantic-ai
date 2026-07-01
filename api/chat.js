@@ -53,7 +53,7 @@ defaultHeaders: {
 }
 });
 
-const MODEL = "mistralai/mistral-small-3.2-24b-instruct:free";
+const MODEL = "mistralai/mistral-small-3.2-24b-instruct";
 
 
 
