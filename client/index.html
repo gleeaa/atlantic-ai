@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>Atlantic AI Planner</title>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
+</head>
+
+<body>
+
+<div
+class="aap-widget"
+id="aap-widget">
+
+    <div
+    class="aap-intro"
+    id="aap-intro">
+
+        <p class="aap-eyebrow">
+            Discover Atlantic Canada
+        </p>
+
+        <h3 class="aap-heading">
+            What's calling you?
+        </h3>
+
+        <p class="aap-sub">
+            Upload a photo that captures the trip you're picturing,
+            or pick a vibe to start.
+        </p>
+
+        <div
+        class="aap-vibe-grid"
+        id="aap-vibe-grid">
+
+            <button
+            type="button"
+            class="aap-vibe-btn"
+            data-vibe="Edge of the Earth">
+
+                <span class="aap-vibe-emoji">🧊</span>
+
+                <span class="aap-vibe-name">
+                    Edge of the Earth
+                </span>
+
+                <span class="aap-vibe-tag">
+                    NL · fjords & icebergs
+                </span>
+
+            </button>
+
+            <button
+            type="button"
+            class="aap-vibe-btn"
+            data-vibe="Coastal Artisan">
+
+                <span class="aap-vibe-emoji">🏘️</span>
+
+                <span class="aap-vibe-name">
+                    Coastal Artisan
+                </span>
+
+                <span class="aap-vibe-tag">
+                    NS · lighthouses & surf
+                </span>
+
+            </button>
+
+            <button
+            type="button"
+            class="aap-vibe-btn"
+            data-vibe="Oceanic Phenomenon">
+
+                <span class="aap-vibe-emoji">🌊</span>
+
+                <span class="aap-vibe-name">
+                    Oceanic Phenomenon
+                </span>
+
+                <span class="aap-vibe-tag">
+                    NB · tides & sea caves
+                </span>
+
+            </button>
+
+            <button
+            type="button"
+            class="aap-vibe-btn"
+            data-vibe="Pastoral Retreat">
+
+                <span class="aap-vibe-emoji">🌾</span>
+
+                <span class="aap-vibe-name">
+                    Pastoral Retreat
+                </span>
+
+                <span class="aap-vibe-tag">
+                    PEI · red sand & harvests
+                </span>
+
+            </button>
+
+        </div>
+
+        <div
+        class="aap-upload"
+        id="aap-upload">
+
+            <label
+            class="aap-upload-label"
+            for="aap-file-input">
+
+                <span class="aap-upload-icon">
+                    📷
+                </span>
+
+                <span>
+                    Upload an inspiration photo (optional)
+                </span>
+
+            </label>
+
+            <input
+            type="file"
+            id="aap-file-input"
+            accept="image/png,image/jpeg,image/webp"
+            hidden>
+
+            <div
+            class="aap-preview"
+            id="aap-preview"
+            hidden>
+
+                <img
+                id="aap-preview-img"
+                alt="Preview">
+
+                <button
+                id="aap-preview-remove"
+                type="button">
+
+                    ✕
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div
+    class="aap-thread"
+    id="aap-thread"></div>
+
+    <div
+    class="aap-itinerary"
+    id="aap-itinerary"
+    hidden></div>
+
+    <div class="aap-composer">
+
+        <textarea
+
+        id="aap-textarea"
+
+        rows="1"
+
+        placeholder="Tell us about your trip..."></textarea>
+
+        <button
+
+        id="aap-send"
+
+        type="button">
+
+            ➤
+
+        </button>
+
+    </div>
+
+    <button
+
+    id="aap-reset"
+
+    class="aap-reset"
+
+    hidden>
+
+        ↺ Start a new trip
+
+    </button>
+
+    <div
+
+    class="aap-loader"
+
+    id="aap-loader"
+
+    hidden>
+
+        <span class="aap-spinner"></span>
+
+        <span id="aap-loader-text">
+
+            Charting your route...
+
+        </span>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
