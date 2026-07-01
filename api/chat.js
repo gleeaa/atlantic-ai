@@ -3,18 +3,15 @@ import cors from "cors";
 import dotenv from "dotenv";
 import multer from "multer";
 import OpenAI from "openai";
-import path from "path";
-import { fileURLToPath } from "url";
 
-import SYSTEM_PROMPT from "./prompt.js";
-import RESPONSE_SCHEMA from "./schema.js";
+
+import SYSTEM_PROMPT from "../prompt.js";
+import RESPONSE_SCHEMA from "../schema.js";
 
 dotenv.config();
 
 const app = express();
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // The client sends the photo as a base64 data-URL STRING field (not a
 // multipart file part), so multer/busboy treats it as a text field.
@@ -41,7 +38,7 @@ app.use(express.urlencoded({
     limit: "15mb"
 }));
 
-app.use(express.static(path.join(__dirname, "../client")));
+
 
 const client = new OpenAI({
     apiKey: process.env.OPENROUTER_API_KEY,
@@ -50,17 +47,15 @@ const client = new OpenAI({
     // mean ~30 minutes before a hung/overloaded free-tier model ever
     // surfaces an error to the client. 30s keeps the UI responsive.
     timeout: 30 * 1000,
-    defaultHeaders: {
-        "HTTP-Referer": "http://localhost:3001",
-        "X-Title": "Atlantic AI Planner Demo"
-    }
+defaultHeaders: {
+    "HTTP-Referer": process.env.APP_URL || "http://localhost:3000",
+    "X-Title": "Atlantic AI Planner Demo"
+}
 });
 
-const MODEL = "mistralai/mistral-small-3.2-24b-instruct";
+const MODEL = "mistralai/mistral-small-3.2-24b-instruct:free";
 
-app.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../client/index.html"));
-});
+
 
 app.post("/api/chat", upload.none(), async (req, res) => {
 
@@ -207,13 +202,4 @@ app.use((err, req, res, next) => {
 
 });
 
-const PORT = process.env.PORT || 3001;
-
-app.listen(PORT, () => {
-
-    console.log("");
-    console.log("====================================");
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-    console.log("====================================");
-
-});
+export default app;
